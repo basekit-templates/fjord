@@ -1,0 +1,64 @@
+{% extends "layout.twig" %}
+{% block content %}
+
+<!-- CONTAINER -->
+<div class="template-container home-page">
+
+	<!-- HEADER -->
+	{% include "includes/header.twig" %}
+
+	<!-- MAIN SECTION -->
+	<div role="main" id="main">
+
+		<!-- GALLERY WIDGET -->
+		{{widget('gallery', 'home-gallery', {
+		'showTitle': true,
+		'showDescription': false,
+		'images':[
+			{'url':asset('/images/gallery/3.jpg'),'title':'First image title'},
+			{'url':asset('/images/gallery/2.jpg')},
+			{'url':asset('/images/gallery/3.jpg')},
+			{'url':asset('/images/gallery/6.jpg'), 'title':'First image title'},
+			{'url':asset('/images/gallery/7.jpg')},
+			{'url':asset('/images/gallery/1.jpg')},
+			{'url':asset('/images/gallery/8.jpg'), 'title':'First image title'},
+			{'url':asset('/images/gallery/9.jpg')},
+			{'url':asset('/images/gallery/4.jpg'), 'title':'First image title'},
+			{'url':asset('/images/gallery/5.jpg')}
+		]})|raw}}
+
+		<!-- MAIN WIDGET ZONE -->
+	   	{{zone('main')|raw}}
+
+	</div>
+	<!-- END MAIN SECTION -->
+
+	<!-- FOOTER -->
+	{% include "includes/footer.twig" %}
+
+</div>
+<!-- END CONTAINER -->
+
+<!-- MASONRY GALLERY -->
+
+{% endblock %}
+
+{% block scripts %}
+
+	<!-- imagesLoaded -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+
+	<!-- Masonry -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.2.1/masonry.pkgd.min.js"></script>
+
+	<script>
+		var container = document.querySelector('.gallery-list');
+
+		imagesLoaded( container, function() {
+			var msnry = new Masonry( container, {
+				itemSelector: '.gallery-item'
+			});
+		});
+	</script>
+	
+{% endblock %}

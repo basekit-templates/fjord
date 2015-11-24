@@ -1,0 +1,856 @@
+// -----------------------------
+// Table of Contents
+// -----------------------------
+
+//  1.   LESS Includes
+//  2.   Mixins
+//  3.   Global
+//  4.   Layout
+//  5.   Header
+//  6.   Main
+//  7.   Footer
+
+
+// -----------------------------
+// 1. LESS Includes
+// -----------------------------
+
+
+// BK LESS Framework Include
+// -------------------------
+
+@import "@{templateCommon}/bk-less-framework.less";
+
+
+// Theme Includes
+// --------------
+
+@import "@{templateLocal}/less/typography.less";  // Typography
+@import "@{templateLocal}/less/widgets.less";     // Widgets
+
+
+// Plugin Includes
+// ---------------
+
+@import "@{templateLocal}/less/plugins/plugin-blog.less";      // Plugin: Blog CSS
+@import "@{templateLocal}/less/plugins/plugin-menu.less";      // Plugin: Menu CSS
+@import "@{templateLocal}/less/plugins/plugin-ecommerce.less"; // Plugin: Ecommerce CSS
+
+
+// -----------------------------
+// 2. Mixins
+// -----------------------------
+
+
+@tablet800px: ~"only screen and (max-width: 800px)";
+@mobile650px: ~"only screen and (max-width: 650px)";
+
+
+.border-radius (@radius: 6px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.transition (@prop: all 0.5s ease) {
+    -webkit-transition: @prop;
+    -moz-transition:    @prop;
+    -ms-transition:     @prop;
+    -o-transition:      @prop;
+}
+
+.animation (@name, @duration: 2s, @ease: ease, @time: infinite, @direction: normal) {
+    -webkit-animation: @name @duration @ease @time @direction;
+    -moz-animation:    @name @duration @ease @time @direction;
+    -ms-animation:     @name @duration @ease @time @direction;
+    animation:         @name @duration @ease @time @direction;
+}
+
+.transform ( @transform: scale(1) ) {
+    -webkit-transform: @transform;
+    -ms-transform: @transform;
+    transform: @transform;
+
+}
+
+.gradient (@startColor: #eee, @endColor: white) {
+    background-color: @startColor;
+    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -ms-linear-gradient(top, @startColor, @endColor);
+    background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.flex-display(@display: flex) {
+    display: ~"-webkit-@{display}";
+    display: ~"-moz-@{display}";
+    display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
+    display: ~"-ms-@{display}"; // IE11
+    display: @display;
+}
+
+.justify-content(@justify: flex-start) {
+          webkit-box-pack: @justify;
+  -webkit-justify-content: @justify;
+     -moz-justify-content: @justify;
+      -ms-justify-content: @justify;
+            -ms-flex-pack: @justify;
+          justify-content: @justify;
+  }
+
+.flex (@display: flex, @direction: row, @wrap: nowrap, @justify: space-between, @align: stretch, @align-items: flex-end) {
+    display: ~"-webkit-@{display}";
+    display: ~"-moz-@{display}";
+    display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
+    display: ~"-ms-@{display}"; // IE11
+    display: @display;
+
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+
+    -webkit-flex-direction: @direction;
+    -moz-flex-direction: @direction;
+    -ms-flex-direction: @direction;
+    flex-direction: @direction;
+
+    -webkit-flex-wrap: @wrap;
+    -moz-flex-wrap: @wrap;
+    -ms-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+
+    -webkit-justify-content: @justify;
+    -moz-justify-content: @justify;
+    -ms-justify-content: @justify;
+    justify-content: @justify;
+
+    -webkit-align-content: @align;
+    -moz-align-content: @align;
+    -ms-align-content: @align;
+    align-content: @align;
+
+    -webkit-align-items: @align-items;
+    -moz-align-items: @align-items;
+    -ms-align-items: @align-items;
+    align-items: @align-items;
+}
+
+
+
+// -----------------------------
+// 3. Global
+// -----------------------------
+
+body {
+    background-color: @color__body--background;
+}
+
+// Links
+.content-widget a {
+    border-bottom: 1px dotted @color__link--text;
+    color: @color__link--text;
+    .transition(all 0.25s ease-out);
+    &:hover {
+        border-bottom: 1px dotted darken(@color__link--text, 4%);
+        color: darken(@color__link--text, 10%);
+        text-decoration: none;
+        .transition(all 0.25s ease-in);
+    }
+}
+
+.emailaddress a {
+    .transition(.5s all ease-out);
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+// Blockquote
+blockquote {
+    border-left: 4px solid fade(@color__secondary, 40%);
+    margin: 30px 0 35px;
+    padding-left: 25px;
+    &:before {
+        content: "";
+    }
+
+    p {
+        padding-bottom: 0; 
+    }
+}
+
+// Pre + Code
+pre { font-size: 14px; }
+
+code { padding: 2px 5px; }
+
+// Buttons
+.button {
+    padding: 10px 20px 8px;
+    text-transform: uppercase;
+    .transition(all 0.5s ease-out);
+
+    //iOS Fixes
+    border-radius: 0;
+    -webkit-appearance: none;
+    &:hover {
+        background-color: darken(@color__button--background--hover, 10%);
+    }
+    &:before, &:after {
+        display: none;
+    }
+}
+
+// Form Elements
+legend { display: none; }
+
+label {
+    color: @color__form-label--text;
+    font-family: @font__button--font-family;
+    font-size: bkscale(@font__button--font-size, 0.92);
+    font-weight: @font__h4--font-weight;
+    text-transform: uppercase;
+}
+
+input.input,
+.textarea,
+select,
+.input--search.product-listing__input,
+.product-filters .input--search  {
+    border: 2px solid lighten(@font-swatch5-color, 40%);
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    color: lighten(@font-swatch5-color, 10%);
+    font-family: bkscale(@font__p--font-family, 0.9);
+    font-size: bkscale(@font__p--font-size, 0.88);
+    line-height: 1.2;
+    height: 48px;
+
+    //iOS Fix
+    //-webkit-appearance: none;
+}
+
+// Focus State
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+.input--single-line:focus {
+    border: 2px solid lighten(@font-swatch5-color, 20%);
+    .transition(.3s all ease-in);
+}
+
+// General Select Elements
+select {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid lighten(@font-swatch5-color, 40%);
+    border-radius: 0;
+}
+
+select::-ms-expand{
+  display: none;
+}
+
+.select-wrap {
+    position: relative;
+    &:after {
+        font-family: 'FontAwesome', sans-serif;
+        font-size: 14px;
+        text-rendering: auto;
+        content:"\f0d7";
+        position: absolute;
+        right: 14px;
+        top: 22%;
+    }
+}
+
+
+
+// -----------------------------
+// 4. Layout
+// -----------------------------
+
+
+// Container
+.template-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    @media only screen and (max-width: 1250px) {
+        margin: 0 25px;
+    }
+}
+
+.home-page, .default-page {
+    .clearfix;
+}
+
+
+
+// -----------------------------
+// 5. Header
+// -----------------------------
+
+
+.template-header {
+    background-color: transparent;
+    // Flex
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 300px;
+    height: 100vh;
+    padding-top: 65px;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    @media only screen and (max-width: 1024px) {
+        width: 180px;
+    }
+    @media @tablet800px {
+        display: block;
+        min-height: initial;
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+    @media @mobile {
+        padding-top: 35px;
+    }
+    // Footer
+    .template-footer {
+        display: block;
+        margin-bottom: 25px;
+        @media @tablet800px {
+            display: none;
+        }
+    }
+    .logo,
+    .companyname {
+        margin-bottom: 10px;
+    }
+    .logo-image {
+        @media @tablet800px {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+.header-main {
+    flex: 1 0 auto;
+}
+
+// Company Name
+// ------------
+
+.companyname {
+    display: block;
+    padding: 8px 0;
+    @media @tablet800px {
+        text-align: center;
+    }
+}
+
+.company-link {
+    color: @color__companyname--text;
+    &:hover {
+        color: @color__companyname--text;
+        text-decoration: none;
+    }
+}
+
+
+// Social
+// -------
+
+.widget__profile .socialicons {
+    @media @tablet800px {
+        display: none;
+    }
+    .social-name { display: none; }
+    .icon {
+        color: gainsboro;
+        text-decoration: none!important;
+        &:before {
+            font-size: 22px;
+            margin-right: 0;
+        }
+        &:hover {
+            .transition(all .5s ease-out);
+        }
+    }
+    .icon--twitter:hover { color: #4099FF; }
+    .icon--facebook:hover { color: #335795; }
+    .icon--googleplus:hover { color: #D34836; }
+    .icon--youtube:hover { color: #D34836; }
+    .icon--rss:hover { color: #FF6200; }
+    .icon--linkedin:hover { color: #03659A; }
+}
+
+// Twitter Feed
+// ------------
+
+.twitter {
+    .avatar {
+        float: left;
+        max-width: 98px;
+        width: 15%;
+        margin-right: 0;
+        padding-right: 5%;
+    }
+    .tweet-wrap {
+        float: left;
+        width: 85%;
+    }
+    .tweet-item {
+        .clearfix;
+    }
+}
+
+// Yelp Review
+// -----------
+
+.review-list {
+    list-style: none;
+    margin-left: 0;
+}
+
+// Copyright
+// ---------
+
+.companycopyright {
+    @media @tablet800px {
+        display: none;
+    }
+    .copyright {
+        color: lighten(@font-swatch5-color, 25%);
+        font-size: bkscale(@font__p--font-size, 0.92);
+        margin-top: 12px;
+    }
+}
+
+
+// Navigation
+// ----------
+
+.template-nav {
+    margin-top: 50px;
+    // Flex
+    @media @tablet800px {
+        display: block;
+        margin: 1.5rem 0 1rem;
+    }
+}
+
+[data-widget-type="extendednavigation"] { width: 100%; }
+
+// Navigation List
+.bk-extendednavigation {
+    .navigation-body {
+        @media @tablet800px {
+            height: 0;
+            padding: 0;
+            opacity: 0;
+            visibility: hidden;
+            &.open {
+                height: 100%;
+                padding-bottom: 5px;
+                position: relative;
+                opacity: 1;
+                .transition(opacity 0.5s ease);
+                visibility: visible;
+            }
+        }
+        .navigation-list {
+            margin-top: 0;
+            @media @mobile {
+                margin-top: 12px;
+            }
+        }
+    }
+}
+
+// List Item
+.navigation-item {
+    display: block;
+    white-space: normal;
+    &:after {
+        border-bottom: 1px solid @color-swatch7;
+        content: "";
+        display: block;
+        max-width: 100%;
+    }
+    &:hover {
+        .navigation-list--children {
+            border-top: 1px solid darken(@color-swatch7, 10%);
+            height: auto;
+            padding: 0;
+            position: relative;
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            transition: height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+            -webkit-transition: height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+            -moz-transition:    height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+            -ms-transition:     height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+            -o-transition:      height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+            visibility: visible;
+        }
+    }
+    &:last-child {
+        border-bottom: 0;
+        &:after {
+            border-bottom: 0;
+        }
+    }
+    .navigation-item .selected .item-name {
+        color: @color__navigation--text--selected;
+    }
+    .item-name {
+        color: @color__navigation--text;
+
+        &:hover {
+            color: @color__navigation--text--hover;
+        }
+    }
+    // Folder Styles at Mobile
+    &.folder {
+        ul {
+            @media @tablet800px {
+                height: 0;
+                padding: 0;
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        &.open ul {
+            @media @tablet800px {
+                border-top: 1px solid darken(@color-swatch7, 10%);
+                height: auto;
+                padding: 0;
+                position: relative;
+                opacity: 1;
+                .transition(opacity 0.75s ease);
+                visibility: visible;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                .navigation-item--child .item-name {
+                    padding: 12px 0;
+                    &:before {
+                        content: "\00a0";
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+    // Dropdown Item
+    .item-name {
+        padding-left: 0;
+        .transition(all 0.5s ease-out);
+        &:hover {
+            color: @color__navigation--text--hover;
+        }
+    }
+    // Dropdown Arrow
+    .item-name--parent:after {
+        border: 4px solid transparent;
+        border-top-color: @font-swatch6-color;
+        margin: 2px 8px;
+    }
+    &.selected > .item-name {
+        color: @color__navigation--text--selected;
+    }
+    // Dropdown Folder
+    .navigation-list--children {
+        display: block;
+        position: absolute;
+        height: 0;
+        padding: 0;
+        opacity: 0;
+        overflow: hidden;
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+        visibility: hidden;
+        transition: height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+        -moz-transition:    height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+        -ms-transition:     height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+        -o-transition:      height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+        -webkit-transition-: height 0.75s ease-in-out, opacity 0.75s ease-in-out, visibility 0.75s ease-in-out;
+    }
+    // Dropdown list items
+    .navigation-item--child .item-name {
+        padding: 12px 0 12px 12px;
+    }
+}
+
+// Toggle Button
+.navigation-toggle {
+    display: none;
+    &:after {
+        content: "+";
+        position: absolute;
+        right: 0;
+    }
+    @media @tablet800px {
+        background: transparent;
+        border-bottom: 1px solid @color-swatch7;
+        color: @color-swatch4;
+        display: block;
+        font-weight: @font__h4--font-weight;
+        padding: 12px 0;
+        text-align: left;
+        text-transform: uppercase;
+        width: 100%;
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+
+
+// -----------------------------
+// 6. Main
+// -----------------------------
+
+
+div[role="main"] {
+    display: inline-block;
+    float: left;
+    padding: 65px 0 0 350px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    @media only screen and (max-width: 1024px) {
+        padding-left: 200px;
+    }
+    @media @tablet800px {
+        display: block;
+        overflow-y: initial;
+        padding: 20px 0 0;
+        width: 100%;
+    }
+}
+
+.bk-zone {
+    margin: 0 auto;
+    max-width: 90%;
+
+    @media @tablet800px {
+        max-width: 100%;
+    }
+}
+
+h1 {
+    padding-bottom: 15px;
+    @media @mobile {
+        font-size: bkscale(@font__h1--font-size, 0.85);
+    }
+}
+
+h2 {
+    @media @mobile {
+        font-size: bkscale(@font__h2--font-size, 0.85);
+    }
+}
+
+// Image Widget
+// ------------
+
+.image-description {
+    font-size: bkscale(@font__p--font-size, 0.85);
+}
+
+
+// Masonry Gallery
+// ---------------
+
+.home-page {
+    .gallery-list {
+        .clearfix;
+        &:hover li {
+            opacity: 1;
+        }
+    }
+    .gallery-item {
+
+        // Gallery List Items
+        float: left;
+        padding: 0 12px 24px;
+        height: auto;
+        width: 33.33%;
+        @media @tablet800px {
+            width: 50%;
+        }
+        @media @mobile {
+            padding: 0 0 24px;
+            width: 100%;
+        }
+        img {
+            -webkit-filter: grayscale(0%);
+            .transition(all 0.5s ease-in-out);
+        }
+        &:hover {
+            img {
+                background-blend-mode: multiply;
+                opacity: 0.25;
+                -webkit-filter: grayscale(100%);
+            }
+            .image-link {
+                background-color: @color-swatch4;
+                text-decoration: none;
+            }
+            figcaption {
+                height: 100%;
+                opacity: 1;
+                position: absolute;
+                top: 0;
+                .transform(scale(0.85));
+                visibility: visible;
+
+                .caption-link {
+                    height: 100%;
+                }
+            }
+        }
+
+        // Gallery Anchor Link
+        .image-link {
+            background-image: none!important;
+            height: auto;
+            .transition(all 0.5s ease-in-out);
+            @media @mobile {
+                margin-right: 0;
+            }
+            &:hover {
+                background-color: @color-swatch4;
+            }
+        }
+
+        // Gallery Inline Image
+        .image {
+            display: block;
+            max-width: 100%;
+        }
+    }
+    .gallery__figure {
+        .transform(scale(1));
+        .transition(all 0.5s ease-in-out);
+        &:hover {
+            .transform(scale(1.05));
+        }
+    }
+
+    // Image Caption
+    figcaption {
+        background-color: transparent;
+        position: relative;
+        display: block;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        text-align: center;
+        -webkit-transform: scale(0.85);
+            -ms-transform: scale(0.85);
+                transform: scale(0.85);
+        width: 100%;
+        visibility: hidden;
+        .transition(all 0.5s ease-in-out);
+        @media @mobile {
+            left: 0;
+        }
+
+        .caption-link {
+            // Flex
+            display: flex;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .image-title {
+            color: white;
+            text-transform: uppercase;
+            font-family: @font__h4--font-family;
+            letter-spacing: 1px;
+            font-size: 15px;
+            border: 2px solid rgba(255,255,255, 0.3);
+            display: inline-block;
+            padding: 6px 12px 5px;
+        }
+        .image-description {
+            display: none;
+        }
+    }
+
+    // Gallery Masonry Transitions
+    .masonry,
+    .masonry .masonry-brick {
+      -webkit-transition-duration: 0.3s;
+         -moz-transition-duration: 0.3s;
+          -ms-transition-duration: 0.3s;
+           -o-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+    }
+
+    .masonry {
+      -webkit-transition-property: height, width;
+         -moz-transition-property: height, width;
+          -ms-transition-property: height, width;
+           -o-transition-property: height, width;
+              transition-property: height, width;
+    }
+
+    .masonry .masonry-brick {
+      -webkit-transition-property: left, right, top;
+         -moz-transition-property: left, right, top;
+          -ms-transition-property: left, right, top;
+           -o-transition-property: left, right, top;
+              transition-property: left, right, top;
+    }
+}
+
+
+
+// -----------------------------
+// 7. Footer
+// -----------------------------
+
+
+.template-footer {
+    display: none;
+    @media @tablet800px {
+        display: block;
+        float: left;
+        margin: 30px 0;
+        text-align: center;
+        width: 100%;
+        .socialicons, .companycopyright {
+            display: block;
+        }
+    }
+}
+
+
+// New Colour Variables
+
+@import "@{templateLocal}/less/color-variables.less";
