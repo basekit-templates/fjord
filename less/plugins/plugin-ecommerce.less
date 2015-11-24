@@ -211,7 +211,7 @@
 
     // Product Image Container
     .product-images {
-        max-height: 450px;
+        max-height: 650px;
         width: 100%;
         @media @tablet800px {
             max-height: none;
@@ -222,14 +222,16 @@
             display: inline-block;
             margin-bottom: 25px;
             width: 80%;
+            vertical-align: top;
             @media @tablet800px {
                 display: block;
                 width: 100%;
             }
         }
         .image-link {
-            height: 420px;
-            line-height: 420px;
+            height: auto;
+            line-height: auto;
+            text-align: left;
             @media @mobile {
                 background-color: none;
                 height: initial;
@@ -340,7 +342,7 @@
 
     // Product Form Group (Select & Buttons)
     .product-actions {
-        margin: 15px 0 20px;
+        margin: 5px 0 20px;
         position: relative;
 
         // Variations Wrapper
