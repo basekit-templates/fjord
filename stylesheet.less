@@ -25,6 +25,7 @@
 // Theme Includes
 // --------------
 
+@import "@{templateLocal}/less/mixins.less";  // Typography
 @import "@{templateLocal}/less/typography.less";  // Typography
 @import "@{templateLocal}/less/widgets.less";     // Widgets
 
@@ -37,114 +38,9 @@
 @import "@{templateLocal}/less/plugins/plugin-ecommerce.less"; // Plugin: Ecommerce CSS
 
 
-// -----------------------------
-// 2. Mixins
-// -----------------------------
-
-
-@tablet800px: ~"only screen and (max-width: 800px)";
-@mobile650px: ~"only screen and (max-width: 650px)";
-
-
-.border-radius (@radius: 6px) {
-    -webkit-border-radius: @radius;
-    -moz-border-radius: @radius;
-    border-radius: @radius;
-}
-
-.transition (@prop: all 0.5s ease) {
-    -webkit-transition: @prop;
-    -moz-transition:    @prop;
-    -ms-transition:     @prop;
-    -o-transition:      @prop;
-}
-
-.animation (@name, @duration: 2s, @ease: ease, @time: infinite, @direction: normal) {
-    -webkit-animation: @name @duration @ease @time @direction;
-    -moz-animation:    @name @duration @ease @time @direction;
-    -ms-animation:     @name @duration @ease @time @direction;
-    animation:         @name @duration @ease @time @direction;
-}
-
-.transform ( @transform: scale(1) ) {
-    -webkit-transform: @transform;
-    -ms-transform: @transform;
-    transform: @transform;
-
-}
-
-.gradient (@startColor: #eee, @endColor: white) {
-    background-color: @startColor;
-    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
-    background: -webkit-linear-gradient(top, @startColor, @endColor);
-    background: -moz-linear-gradient(top, @startColor, @endColor);
-    background: -ms-linear-gradient(top, @startColor, @endColor);
-    background: -o-linear-gradient(top, @startColor, @endColor);
-}
-
-.flex-display(@display: flex) {
-    display: ~"-webkit-@{display}";
-    display: ~"-moz-@{display}";
-    display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
-    display: ~"-ms-@{display}"; // IE11
-    display: @display;
-}
-
-.justify-content(@justify: flex-start) {
-          webkit-box-pack: @justify;
-  -webkit-justify-content: @justify;
-     -moz-justify-content: @justify;
-      -ms-justify-content: @justify;
-            -ms-flex-pack: @justify;
-          justify-content: @justify;
-  }
-
-.flex (@display: flex, @direction: row, @wrap: nowrap, @justify: space-between, @align: stretch, @align-items: flex-end) {
-    display: ~"-webkit-@{display}";
-    display: ~"-moz-@{display}";
-    display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
-    display: ~"-ms-@{display}"; // IE11
-    display: @display;
-
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-
-    -webkit-flex-direction: @direction;
-    -moz-flex-direction: @direction;
-    -ms-flex-direction: @direction;
-    flex-direction: @direction;
-
-    -webkit-flex-wrap: @wrap;
-    -moz-flex-wrap: @wrap;
-    -ms-flex-wrap: @wrap;
-    flex-wrap: @wrap;
-
-    -webkit-box-pack: justify;
-    -moz-box-pack: justify;
-    -ms-flex-pack: justify;
-
-    -webkit-justify-content: @justify;
-    -moz-justify-content: @justify;
-    -ms-justify-content: @justify;
-    justify-content: @justify;
-
-    -webkit-align-content: @align;
-    -moz-align-content: @align;
-    -ms-align-content: @align;
-    align-content: @align;
-
-    -webkit-align-items: @align-items;
-    -moz-align-items: @align-items;
-    -ms-align-items: @align-items;
-    align-items: @align-items;
-}
-
-
 
 // -----------------------------
-// 3. Global
+// 2. Global
 // -----------------------------
 
 body {
@@ -231,7 +127,7 @@ select,
     font-family: bkscale(@font__p--font-family, 0.9);
     font-size: bkscale(@font__p--font-size, 0.88);
     line-height: 1.2;
-    height: 48px;
+    height: 50px;
 
     //iOS Fix
     //-webkit-appearance: none;
@@ -277,7 +173,7 @@ select::-ms-expand{
 
 
 // -----------------------------
-// 4. Layout
+// 3. Layout
 // -----------------------------
 
 
@@ -297,7 +193,7 @@ select::-ms-expand{
 
 
 // -----------------------------
-// 5. Header
+// 4. Header
 // -----------------------------
 
 
@@ -435,8 +331,8 @@ select::-ms-expand{
         display: none;
     }
     .copyright {
-        color: lighten(@font-swatch5-color, 25%);
-        font-size: bkscale(@font__p--font-size, 0.92);
+        color: lighten(@font-swatch5-color, 20%);
+        font-size: bkscale(@font__p--font-size, 0.96);
         margin-top: 12px;
     }
 }
@@ -624,7 +520,7 @@ select::-ms-expand{
 
 
 // -----------------------------
-// 6. Main
+// 5. Main
 // -----------------------------
 
 
@@ -794,6 +690,7 @@ h2 {
             font-family: @font__h4--font-family;
             letter-spacing: 1px;
             font-size: 15px;
+            font-weight: 700;
             border: 2px solid rgba(255,255,255, 0.3);
             display: inline-block;
             padding: 6px 12px 5px;
@@ -833,7 +730,7 @@ h2 {
 
 
 // -----------------------------
-// 7. Footer
+// 6. Footer
 // -----------------------------
 
 
@@ -854,4 +751,4 @@ h2 {
 
 // New Colour Variables
 
-@import "@{templateLocal}/less/color-variables.less";
+//@import "@{templateLocal}/less/color-variables.less";

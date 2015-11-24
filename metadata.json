@@ -125,7 +125,7 @@
         "font7": {
             "font-family": "\"Source Sans Pro\", Geneva, Tahoma, sans-serif",
             "font-size": "15px",
-            "font-weight": "inherit",
+            "font-weight": "600",
             "line-height": "inherit",
             "color": "@color-swatch1",
             "letter-spacing": "1px",
