@@ -22,10 +22,26 @@
 // Typography
 // -----------------------------
 
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300,700);
+
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
 
 // Headings
 // -------------------------
 
+h1,h2,h3,h4,h5 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 700;
+}
+
+p, li, a {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+}
 
 h1 {
 	color: @color__h1--text;
@@ -59,7 +75,6 @@ p {
 
 
 // Anchor links
-
 .widget__content a {
 	color: @color__link--text;
 }
