@@ -237,7 +237,7 @@
             "font__feature-strapline--line-height" : "@font-swatch9-line-height",
             "font__feature-strapline--letter-spacing" : "@font-swatch9-letter-spacing"
         },
-        "forms": {
+        "form": {
             "color__form-legend--text": "@color-swatch4",
             "color__form-label--text": "@color-swatch4"
         },
