@@ -32,7 +32,7 @@
 // Navigation Title
 .menu-item-name {
 	background: transparent;
-	border-bottom: 2px solid lighten(@font-swatch4-color, 30%);
+	border-bottom: 2px solid lighten(@font-swatch4-color, 40%);
 	color: lighten(@font-swatch4-color, 40%);
 	font-family: @font__button--font-family;
 	font-size: bkscale(@font__button--font-size, 0.92);
@@ -43,6 +43,7 @@
 	.transition(.5s all ease-out);
 	&:hover {
 		background: transparent;
+		border-color: @font-swatch4-color;
 		color: @font-swatch4-color;
 		text-decoration: none;
 	}
@@ -93,7 +94,6 @@
 	}
 	// Menu Price
 	.item-price {
-		color: @color-swatch2;
 		font-family: @font__h4--font-family;
 		font-size: bkscale(@font__p--font-size, 1.05);
 		line-height: bkscale(@font__p--line-height, 0.82);

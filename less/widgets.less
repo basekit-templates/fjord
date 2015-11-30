@@ -315,6 +315,9 @@
         opacity: 0;
         .transition(opacity, 0.5s, ease);
     }
+    .selected .button {
+        background-color: @color__link--text;
+    }
 }
 
 .responsiveslideshow:hover {
@@ -636,7 +639,6 @@ button,
         }
     }
     legend {
-        color: @color-swatch4;
         display: block;
         font-family: @font__h2--font-family;
         font-size: bkscale(@font__h2--font-size, 0.90);
