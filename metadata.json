@@ -242,7 +242,7 @@
             "color__form-label--text": "@color-swatch4"
         },
         "image": {
-            "color__image-caption--background": "transparent",
+            "color__image-caption--background": "@color__body--background",
             "color__image-title--text": "@font-swatch2-color",
             "color__image-description--text": "@font-swatch5-color"
         },
