@@ -104,7 +104,7 @@
 
 .imagewidget__caption {
     background-color: @color__image-caption--background;
-    padding: 5px 15px;
+    padding: 8px 20px 8px 15px;
     position: absolute;
     bottom: 0;
 }
@@ -230,6 +230,7 @@
             }
             .image-title {
                 color: @color__gallery-title--text;
+                line-height: bkscale(@font__p--line-height, 0.75);
                 text-transform: uppercase;
                 font-family: @font__h4--font-family;
                 letter-spacing: 1px;
@@ -240,7 +241,7 @@
             .image-description {
                 color: darken(@color__gallery-description--text, 15%);
                 font-size: 15px;
-                line-height: 23px;
+                line-height: 24px;
             }
         }
 
@@ -545,7 +546,6 @@ button,
 //  --------------
 
 .clicktocall a, .company-phone-number a {
-    color: @color__link--text;
     .transition(.5s all ease-out);
     &:hover {
         color: darken(@color__link--text, 4%);
@@ -734,6 +734,7 @@ button,
     .account-link {
         color: @color__h3--text;
         display: block;
+        font-weight: 600;
         line-height: 25px;
         margin-bottom: 4px;
     }
