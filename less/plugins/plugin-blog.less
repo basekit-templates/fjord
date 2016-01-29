@@ -150,12 +150,13 @@
 // Read More Link
 .read-more {
 	background-color: @color__link--text;
+	color: @color__button--text;
 	display: inline-block;
 	font-family: @font__button--font-family;
 	font-size: @font__button--font-size;
 	font-weight: @font__button--font-weight;
 	letter-spacing: @font__button--letter-spacing;
-	margin: 8px 0 12px;
+	margin: 0 0 12px;
 	padding: 8px 12px;
 	text-transform: uppercase;
 	.transition(all .5s ease-out);
@@ -245,7 +246,7 @@
 	// Blog Post Title
 	.post-title {
 		color: @color__blogpost-title--text;
-		padding: 5px 0 30px;
+		padding: 0 0 30px;
 		text-align: center;
 		@media @mobile {
 			font-size: bkscale(@font__h1--font-size, 0.8);
@@ -357,6 +358,7 @@
 		font-family: @font__button--font-family;
 		font-size: bkscale(@font__button--font-size, 0.9);
 		font-weight: 600;
+		letter-spacing: 1px;
 		text-transform: uppercase;
 	}
 	.category-title,
@@ -387,7 +389,7 @@
 	// Tags
 	.tag-link {
 		background-color: lighten(@color-swatch7, 1%);
-		color: @font__p--color;
+		color: @color__p--text;
 		padding: 6px 8px;
 		.transition(all .5s ease-out);
 		&:hover {

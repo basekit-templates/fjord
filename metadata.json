@@ -81,9 +81,9 @@
         },
         "font2": {
             "font-family": "\"Source Sans Pro\", Geneva, Tahoma, sans-serif",
-            "font-size": "30px",
+            "font-size": "28px",
             "font-weight": "700",
-            "line-height": "38px",
+            "line-height": "36px",
             "color": "@color-swatch4",
             "letter-spacing": "inherit"
         },
