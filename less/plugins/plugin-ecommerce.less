@@ -152,6 +152,12 @@
     &:first-child {
         min-width: 250px;
     }
+    &:last-child {
+        @media @mobile650px {
+            right: 0;
+            width: auto;
+        }
+    }
 }
 
 button.ecomproductslist__button {
@@ -261,11 +267,8 @@ button.ecomproductslist__button {
 
     // Product Image Container
     .product-images {
-        max-height: 650px;
+        max-height: auto;
         width: 100%;
-        @media @tablet800px {
-            max-height: none;
-        }
 
         // Single Product Image
         .product-image {

@@ -261,7 +261,6 @@
             "color__blogpost-title--text": "@font-swatch4-color"
         },
         "ecommerce": {
-            "color__ecomproductslist-product-title--text": "@color-swatch4",
             "color__ecomproduct-title--text": "@font-swatch4-color",
             "color__ecomproduct-price--text": "@color__secondary"
         },
