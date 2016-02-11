@@ -150,18 +150,11 @@
 
 .product-filters .fieldset--search .form-group {
     &:first-child {
-        margin-right: 0;
-    }
-    &:last-child {
-        margin-left: -5px;
-
-        @media @mobile650px {
-            margin-left: 0;
-        }
+        min-width: 250px;
     }
 }
 
-.ecomproductlist__button {
+button.ecomproductslist__button {
     background: transparent image('/images/search-icon.png');
     background: transparent image('/images/search-icon.svg'), none;
     background-repeat: no-repeat;
