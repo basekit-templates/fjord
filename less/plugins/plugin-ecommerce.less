@@ -304,6 +304,7 @@ button.ecomproductslist__button {
             }
         }
         .image {
+            max-height: 800px;
              @media @mobile {
                 background-color: none;
                 height: initial;
@@ -317,7 +318,7 @@ button.ecomproductslist__button {
     .product-gallery {
         display: inline-block;
         margin: 0 0 0 4%;
-        max-height: 450px;
+        max-height: 800px;
         position: relative;
         overflow: hidden;
         vertical-align: top;
@@ -329,8 +330,8 @@ button.ecomproductslist__button {
             width: initial;
         }
         .gallery-item {
-            height: 120px;
-            line-height: 120px;
+            height: auto;
+            line-height: inherit;
             font-size: 0;
             margin-bottom: 20px;
             margin-right: 15px;
