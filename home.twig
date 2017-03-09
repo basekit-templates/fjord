@@ -51,7 +51,7 @@
 	<!-- Masonry -->
 	<script src="{{asset('js/masonry.min.js')}}"></script>
 
-	<script>
+	<script nonce="{{ numberUsedOnce }}">
 		var container = document.querySelector('.gallery-list');
 
 		imagesLoaded( container, function() {
