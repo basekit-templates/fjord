@@ -28,7 +28,7 @@
 
 {% block scripts %}
 
-<script type="text/javascript">
+<script nonce="{{ numberUsedOnce }}">
 	$('.product-gallery').each(function(){
 	  var max = 3
 	  if ($(this).find("li").length > max) {
@@ -45,7 +45,7 @@
 	});
 </script>
 
-<script>
+<script nonce="{{ numberUsedOnce }}">
 $('#ecomscroll').click(function(e) {
 	e.preventDefault();
 	var id = e.target.id;
