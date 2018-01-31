@@ -682,6 +682,9 @@ h2 {
         }
 
         .caption-link {
+            border: 2px solid rgba(255,255,255,0.3);
+            flex-direction: column;
+
             // Flex
             display: flex;
             -webkit-align-items: center;
@@ -700,14 +703,15 @@ h2 {
             text-transform: uppercase;
             font-family: @font__h4--font-family;
             letter-spacing: 1px;
+            line-height: 1;
             font-size: 15px;
             font-weight: 700;
-            border: 2px solid rgba(255,255,255, 0.3);
             display: inline-block;
-            padding: 6px 12px 5px;
+            padding: 6px 12px 2px;
         }
+
         .image-description {
-            display: none;
+            line-height: 26px;
         }
     }
 
