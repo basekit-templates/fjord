@@ -6,8 +6,6 @@
 #migrated-site {
 
 
-
-
     // Stylesheet overrides
     // -----------------------------
 
@@ -17,13 +15,21 @@
     }
     
     
-    &.template-default .template-header {
+    .template-header,
+    div[role="main"] {
+        overflow: inherit;
+    }
+    div[role="main"] {
+        float: none;
+    }
+    
+    [data-name="row"] .widget--zone-widget {
         margin-bottom: 0;
     }
     
-
-    .template-footer {
-        margin-top: 0;
+    .default-page .style--light:first-child .row--style-light .row__container,
+    .ecom-page .style--light:first-child .row--style-light .row__container {
+        padding-top: 0;
     }
 
 
@@ -34,39 +40,71 @@
     
     
     // Applies spacing to widgets to mimic container width
-    [data-widget-type="extendednavigation"],
-    [data-widget-type="feature"],
-    .template-header,
-    .template-footer,
     .empty-zone,
     #page-zones__main:empty,
     #page-zones__main > .widget:not([data-name="row"]),
     .row:not(.row--width-no-padding) .row__container {
-
-        @media only screen and (min-width: 1140px) {
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 960px;
-            width: 90%;
-        }
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 850px;
     }
     
     
     // Adds spacing to a section when a widget follows it
     #page-zones__main > [data-name="row"] + .widget:not([data-name="row"]),
     #page-zones__main > .widget:not([data-name="row"]) + [data-name="row"]:not(:last-child),
-    &.edit #page-zones__main-overlay + .widget:not([data-name="row"]),
-    #page-zones__main > .widget:not([data-name="row"]):first-child {
-        margin-top: 2.5em;
+    &.edit #page-zones__main-overlay + .widget:not([data-name="row"]) {
+        margin-top: 24px;
     }
 
     
     // Move spacing to last widget in the main zone (not sections)
     #page-zones__main > .widget:not([data-name="row"]):last-child {
-        margin-bottom: 2em;
-
-        @media @tablet {
-            margin-bottom: 1em;
+        margin-bottom: 20px;
+    }
+    
+    
+    // Remove section sidebar overlay
+    .row-overlay:before,
+    .row-overlay:after {
+        background: none !important;
+    }
+    .row-overlay__edit-button,
+    .row-overlay__arrangement-button-group,
+    .row-overlay__delete-button {
+        box-shadow: 0 2px 8px 0 rgba(51,51,51,0.3);
+    }
+    
+    
+    // Remove left/right padding for light sections
+    .style--light .row--style-light .row__container {
+        width: 100%;
+    }
+    
+    
+    // Reduce container spacing
+    .height--large .row__container,
+    .height--default .row__container,
+    #page-zones__main .height--no-padding .row--layout-image-text-5c:not(.row--layout-image-text-5a) .row__container,
+    #page-zones__main .style--background-image+.height--default .row__container {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        
+        @media @mobile {
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
     }
+    
+    .signupform__form {
+        min-width: 50%;
+    }
+    .signupform__button {
+        z-index: 1;
+    }
+    
+    .row--image-text-8a .gallery__image-link {
+        padding-bottom: 0;
+    }
+    
 }
