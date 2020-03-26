@@ -10,17 +10,17 @@
     // -----------------------------
 
 
-    .site-container {
-        width: 100%;
+    .template-container {
     }
     
     
     .template-header,
     div[role="main"] {
-        overflow: inherit;
+        // overflow: inherit;
     }
     div[role="main"] {
         float: none;
+        overflow-x: inherit;
     }
     
     [data-name="row"] .widget--zone-widget {
@@ -105,6 +105,26 @@
     
     .row--image-text-8a .gallery__image-link {
         padding-bottom: 0;
+    }
+    
+    .blogsearch button {
+        position: relative;
+    }
+    
+    
+    [data-name="row"] {
+        .social-item {
+            display: inline-block;
+            padding: 0;
+        }
+        .bk-socialicons .social-link {
+            display: inline-block;
+            width: 40px;
+            padding: 10px 0;
+        }
+        .bk-socialicons .icon:before {
+            margin-right: inherit;
+        }
     }
     
 }
