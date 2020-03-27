@@ -580,7 +580,8 @@ h2 {
 // Masonry Gallery
 // ---------------
 
-.home-page {
+.home-page #page-zones__main > .widget:not([data-name="row"]),
+.home-page [data-widget-type="gallery"] {
     .gallery-list {
         .clearfix;
         &:hover li {
@@ -760,8 +761,3 @@ h2 {
         }
     }
 }
-
-
-// New Colour Variables
-
-//@import "@{templateLocal}/less/color-variables.less";
